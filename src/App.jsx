@@ -8,11 +8,14 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import Catalogo from "./pages/Catalogo";
+import { Analytics } from "@vercel/analytics/next"
 
 export function App() {
   return (
     <BrowserRouter>
       <Routes>
+
+        <Analytics />
 
         <Route
           path="/"
