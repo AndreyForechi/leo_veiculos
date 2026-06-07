@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 import {
     ArrowRight,
 } from "lucide-react";
 
 export function Hero() {
+    const navigate = useNavigate();
     return (
         <section className="min-h-screen relative flex items-center justify-center px-6 text-center" id="home">
             <div className="absolute top-0 left-0 w-full h-40 bg-linear-to-b from-black/80 to-transparent z-0" />
@@ -38,7 +40,7 @@ export function Hero() {
                     className="mt-10 flex justify-center gap-4 flex-wrap"
                 >
                     <a
-                        href="#projects"
+                        onClick={() => navigate("/catalogo")}
                         className="bg-white w-50 justify-center text-black px-2 py-4 rounded-full font-semibold hover:scale-105 transition flex items-center gap-2"
                     >
                         Ver Estoque
