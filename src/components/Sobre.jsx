@@ -25,8 +25,8 @@ export function Sobre() {
                         transition={{ duration: 0.6 }}
                         className="overflow-hidden rounded-4xl"
                     >
-                        <div
-
+                        <img
+                            src="/sobre.webp"
                             className="bg-white text-center flex flex-col hover:scale-103 justify-center text-black w-full h-137.5 object-cover transition duration-700"
 
 
