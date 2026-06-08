@@ -7,19 +7,19 @@ export function VeiculosVendidos() {
             nome: "Evoque",
             ano: "2020",
             entregue: "Entregue em Março",
-            imagem: "./public/vendido_1.webp",
+            imagem: "/vendido_1.webp",
         },
         {
             nome: "S10 LTZ",
             ano: "2019",
             entregue: "Entregue em Abril",
-            imagem: "./public/vendido_2.webp",
+            imagem: "/vendido_2.webp",
         },
         {
             nome: "Moto",
             ano: "2018",
             entregue: "Entregue em Maio",
-            imagem: "./public/vendido_3.webp",
+            imagem: "/vendido_3.webp",
         },
     ];
 
