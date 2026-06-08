@@ -38,47 +38,6 @@ export function Footer() {
                         </p>
                     </div>
 
-                    {/* Navegação */}
-                    <div>
-                        <h3 className="text-lg font-semibold mb-5">
-                            Navegação
-                        </h3>
-
-                        <div className="flex flex-col gap-4 text-zinc-400">
-                            <a
-                                href="#home"
-                                className="hover:text-yellow-400 transition flex items-center gap-2"
-                            >
-                                <ChevronRight size={16} />
-                                Início
-                            </a>
-
-                            <a
-                                href="#about"
-                                className="hover:text-yellow-400 transition flex items-center gap-2"
-                            >
-                                <ChevronRight size={16} />
-                                Sobre
-                            </a>
-
-                            <a
-                                href="#projects"
-                                className="hover:text-yellow-400 transition flex items-center gap-2"
-                            >
-                                <ChevronRight size={16} />
-                                Veículos
-                            </a>
-
-                            <a
-                                href="#contact"
-                                className="hover:text-yellow-400 transition flex items-center gap-2"
-                            >
-                                <ChevronRight size={16} />
-                                Contato
-                            </a>
-                        </div>
-                    </div>
-
                     {/* Contato */}
                     <div>
                         <h3 className="text-lg font-semibold mb-5">
@@ -113,7 +72,7 @@ export function Footer() {
                     </div>
 
                     {/* CTA */}
-                    <div className="bg-black border border-white/10 rounded-[32px] p-6">
+                    <div className="bg-black border flex flex-col w-full border-white/10 rounded-[32px] p-6">
                         <span className="text-yellow-400 text-sm">
                             Atendimento rápido
                         </span>
@@ -130,7 +89,7 @@ export function Footer() {
                         <a
                             href="https://wa.me/5527998401662?text=Olá,%20gostaria%20de%20mais%20informações%20sobre%20os%20veículos."
                             target="_blank"
-                            className="mt-5 inline-flex items-center gap-3 bg-white text-black px-6 py-4 rounded-full font-semibold hover:scale-105 transition"
+                            className="mt-5 inline-flex justify-center items-center gap-3 bg-white text-black px-6 py-4 rounded-full font-semibold hover:scale-105 transition"
                         >
                             Chamar no WhatsApp
                             <Phone size={18} />

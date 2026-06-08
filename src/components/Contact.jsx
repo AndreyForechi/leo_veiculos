@@ -16,7 +16,7 @@ export function Contact() {
                             Atendimento rápido via WhatsApp
                         </span>
 
-                        <h2 className="text-4xl md:text-6xl font-bold leading-tight max-w-3xl">
+                        <h2 className="text-4xl md:text-6xl text-white font-bold leading-tight max-w-3xl">
                             Encontrou o carro ideal ou quer ver mais{" "}
                             <span className="text-yellow-400">
                                 opções?

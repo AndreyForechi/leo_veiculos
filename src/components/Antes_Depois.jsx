@@ -4,19 +4,22 @@ import { motion } from "framer-motion";
 export function VeiculosVendidos() {
     const vendidos = [
         {
-            nome: "Honda Civic Touring",
+            nome: "Evoque",
             ano: "2020",
             entregue: "Entregue em Março",
+            imagem: "./public/vendido_1.webp",
         },
         {
-            nome: "BMW 320i",
+            nome: "S10 LTZ",
             ano: "2019",
             entregue: "Entregue em Abril",
+            imagem: "./public/vendido_2.webp",
         },
         {
-            nome: "Audi A3 Sedan",
+            nome: "Moto",
             ano: "2018",
             entregue: "Entregue em Maio",
+            imagem: "./public/vendido_3.webp",
         },
     ];
 
@@ -48,14 +51,12 @@ export function VeiculosVendidos() {
                             <div className="relative h-72 bg-white flex items-center justify-center">
 
                                 {/* Badge vendido */}
-                                <div className="absolute top-5 left-5 bg-green-500 text-black px-4 py-2 rounded-full flex items-center gap-2 font-semibold text-sm">
+                                <div className="absolute top-5 left-5 bg-yellow-400 text-black px-4 py-2 rounded-full flex items-center gap-2 font-semibold text-sm">
                                     <CheckCircle size={18} />
                                     Vendido
                                 </div>
 
-                                <span className="text-black font-semibold">
-                                    Foto do veículo
-                                </span>
+                                <img src={carro.imagem} alt={carro.nome} className="object-cover h-full w-full" />
                             </div>
 
                             {/* Conteúdo */}
@@ -69,7 +70,7 @@ export function VeiculosVendidos() {
                                 </p>
 
                                 <div className="mt-5 border-t border-white/10 pt-5">
-                                    <p className="text-green-400 font-medium">
+                                    <p className="text-yellow-400 font-medium">
                                         ✓ {carro.entregue}
                                     </p>
 

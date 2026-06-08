@@ -4,6 +4,9 @@ import NavBar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
+import Contact from "../components/Contact";
+import Footer from "../components/Footer";
+
 function CarCard({ car }) {
     const [imgIndex, setImgIndex] = useState(0);
 
@@ -129,7 +132,7 @@ Poderia me passar mais informações?
                     </p>
 
                     <div className="flex justify-center h-full gap-1 flex-col">
-                        <span className="text-white font-bold text-xl">
+                        <span className="text-white text-white font-bold text-xl">
                             R$ {Number(car.price).toLocaleString("pt-BR")}
                         </span>
 
@@ -254,7 +257,8 @@ export function Catalogo() {
                 </div>
 
             </section>
-
+                    <Contact />
+                    <Footer />
         </div>
     );
 }

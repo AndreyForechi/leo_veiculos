@@ -118,7 +118,7 @@ export function Servicos() {
                                         <span>{car.km} km</span>
                                     </div>
 
-                                    <h4 className="text-3xl font-bold mt-5 text-white">
+                                    <h4 className="text-3xl font-bold mt-5 text-yellow-400">
                                         R$ {Number(car.price).toLocaleString("pt-BR")}
                                     </h4>
 
