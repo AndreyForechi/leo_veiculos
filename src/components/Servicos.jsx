@@ -66,14 +66,14 @@ export function Servicos() {
                     <div className="flex flex-col sm:flex-row gap-3">
                         <button
                             onClick={() => scroll("left")}
-                            className="bg-zinc-900 border border-white/10 p-4 rounded-full hover:bg-white hover:text-black transition"
+                            className="bg-zinc-900 cursor-pointer border border-white/10 p-4 rounded-full hover:bg-white hover:text-black transition"
                         >
                             <ChevronLeft />
                         </button>
 
                         <button
                             onClick={() => scroll("right")}
-                            className="bg-zinc-900 border border-white/10 p-4 rounded-full hover:bg-white hover:text-black transition"
+                            className="bg-zinc-900 cursor-pointer border border-white/10 p-4 rounded-full hover:bg-white hover:text-black transition"
                         >
                             <ChevronRight />
                         </button>
@@ -109,7 +109,7 @@ export function Servicos() {
                                 {/* CONTENT */}
                                 <div className="p-6">
                                     <h3 className="text-2xl font-semibold">
-                                        {car.brand} {car.model}
+                                        {car.name} {car.model}
                                     </h3>
 
                                     <div className="flex gap-3 text-sm text-zinc-400 mt-3">
@@ -122,7 +122,7 @@ export function Servicos() {
                                         R$ {Number(car.price).toLocaleString("pt-BR")}
                                     </h4>
 
-                                    <button className="mt-6 w-full bg-white text-black py-4 rounded-full font-semibold hover:scale-[1.02] transition">
+                                    <button className="mt-6 w-full cursor-pointer bg-white text-black py-4 rounded-full font-semibold hover:scale-[1.02] transition">
                                         Tenho Interesse
                                     </button>
                                 </div>

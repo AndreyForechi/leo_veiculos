@@ -41,7 +41,7 @@ export function Hero() {
                 >
                     <a
                         onClick={() => navigate("/catalogo")}
-                        className="bg-white w-50 justify-center text-black px-2 py-4 rounded-full font-semibold hover:scale-105 transition flex items-center gap-2"
+                        className="bg-white w-50 cursor-pointer justify-center text-black px-2 py-4 rounded-full font-semibold hover:scale-105 transition flex items-center gap-2"
                     >
                         Ver Estoque
                         <ArrowRight size={18} />
@@ -49,7 +49,7 @@ export function Hero() {
 
                     <a
                         href="#contact"
-                        className="border w-50 border-white/20 px-2 py-4 rounded-full hover:bg-white hover:text-black transition"
+                        className="border w-50 cursor-pointer border-white/20 px-2 py-4 rounded-full hover:bg-white hover:text-black transition"
                     >
                         Falar no WhatsApp
                     </a>

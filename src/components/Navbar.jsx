@@ -9,11 +9,11 @@ export function Navbar() {
                 <img
                     src="/logo_leo.jpg"
                     alt="Logo"
-                    className="w-13 h-13 rounded-full bg-white text-black text-sm flex items-center justify-center font-bold"></img>
+                    className="w-13 h-13 cursor-pointer rounded-full bg-white text-black text-sm flex items-center justify-center font-bold"></img>
                 <div />
             </a>
 
-            <nav className="hidden md:flex gap-8 text-sm text-zinc-300">
+            <nav className="flex gap-8 text-sm text-zinc-300">
                 <a href="#about" className="hover:text-white transition">
                     Sobre
                 </a>

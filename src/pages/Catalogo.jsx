@@ -68,7 +68,7 @@ Poderia me passar mais informações?
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
 
                     {car.featured && (
-                        <span className="absolute top-2 right-2 text-[9px] uppercase tracking-wider bg-yellow-500/90 text-black px-2 py-1 rounded-full font-bold z-10">
+                        <span className="absolute cursor-pointer top-2 right-2 text-[9px] uppercase tracking-wider bg-yellow-500/90 text-black px-2 py-1 rounded-full font-bold z-10">
                             Destaque
                         </span>
                     )}
@@ -77,7 +77,7 @@ Poderia me passar mais informações?
                     {images.length > 1 && (
                         <button
                             onClick={prevImage}
-                            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white w-7 h-7 rounded-full z-10"
+                            className="absolute cursor-pointer left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white w-7 h-7 rounded-full z-10"
                         >
                             ‹
                         </button>
@@ -86,7 +86,7 @@ Poderia me passar mais informações?
                     {images.length > 1 && (
                         <button
                             onClick={nextImage}
-                            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white w-7 h-7 rounded-full z-10"
+                            className="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white w-7 h-7 rounded-full z-10"
                         >
                             ›
                         </button>
@@ -114,7 +114,7 @@ Poderia me passar mais informações?
                 <div className="flex flex-col gap-3 p-3 w-full">
 
                     <h2 className="text-base sm:text-lg font-semibold tracking-tight">
-                        {car.brand} {car.model}
+                        {car.name} {car.model}
                     </h2>
 
                     {/* SPECS */}
@@ -129,7 +129,7 @@ Poderia me passar mais informações?
                     </p>
 
                     <div className="flex justify-center h-full gap-1 flex-col">
-                        <span className="text-green-400 font-bold text-base sm:text-lg">
+                        <span className="text-white font-bold text-xl">
                             R$ {Number(car.price).toLocaleString("pt-BR")}
                         </span>
 
@@ -137,7 +137,7 @@ Poderia me passar mais informações?
                 </div>
                 <button
                     onClick={handleInterest}
-                    className="p-4 w-full flex items-center justify-around bg-white text-black font-semibold text-[12px] sm:text-sm active:scale-95 transition"
+                    className="p-4 w-full cursor-pointer flex items-center justify-around bg-white text-black font-semibold text-[12px] sm:text-sm active:scale-95 transition"
                 >
                     Tenho Interesse <ArrowRight />
                 </button>
@@ -219,7 +219,7 @@ export function Catalogo() {
                     <div className="grid grid-cols-2 gap-3">
                         <button
                             onClick={() => setOnlyFeatured(!onlyFeatured)}
-                            className={`px-4 py-2.5 rounded-xl text-sm border transition ${onlyFeatured
+                            className={`px-4 py-2.5 rounded-xl cursor-pointer text-sm border transition ${onlyFeatured
                                 ? "bg-yellow-500 text-black border-yellow-400 font-semibold"
                                 : "bg-zinc-900 border-white/10"
                                 }`}
@@ -228,7 +228,7 @@ export function Catalogo() {
                         </button>
                         <button
                             onClick={() => navigate("/")}
-                            className="px-4 py-2.5 rounded-xl text-black text-sm bg-white border-white/10 border"
+                            className="px-4 py-2.5 cursor-pointer rounded-xl text-black text-sm bg-white border-white/10 border"
                         >
                             Voltar
                         </button>
