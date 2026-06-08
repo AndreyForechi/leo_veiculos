@@ -185,7 +185,8 @@ export function Catalogo() {
     const filteredCars = cars.filter((car) => {
         const matchesSearch =
             car.brand?.toLowerCase().includes(search.toLowerCase()) ||
-            car.model?.toLowerCase().includes(search.toLowerCase());
+            car.model?.toLowerCase().includes(search.toLowerCase()) ||
+            car.name?.toLowerCase().includes(search.toLowerCase());
 
         const matchesFeatured = onlyFeatured ? car.featured === true : true;
 
