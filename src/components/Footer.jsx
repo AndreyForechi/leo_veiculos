@@ -10,7 +10,7 @@ export function Footer() {
         <footer className="border-t border-white/10 bg-zinc-950 px-6 py-16">
             <div className="max-w-7xl mx-auto">
 
-                <div className="grid md:grid-cols-4 gap-12">
+                <div className="grid md:grid-cols-3 gap-12">
 
                     {/* Logo / descrição */}
                     <div className="flex flex-col gap-5">

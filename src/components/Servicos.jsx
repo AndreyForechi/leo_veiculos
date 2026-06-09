@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, CalendarDays, ChevronLeft, ChevronRight, Gauge } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "/services/supabase";
@@ -113,9 +113,9 @@ export function Servicos() {
                                     </h3>
 
                                     <div className="flex gap-3 text-sm text-zinc-400 mt-3">
-                                        <span>{car.year}</span>
+                                        <span className="flex gap-1.5"><CalendarDays size={20}/>{car.year}</span>
                                         <span>•</span>
-                                        <span>{car.km} km</span>
+                                        <span className="flex gap-1.5"><Gauge size={20}/>{car.km} km</span>
                                     </div>
 
                                     <h4 className="text-3xl font-bold mt-5 text-yellow-400">

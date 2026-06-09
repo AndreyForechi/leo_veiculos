@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "/services/supabase";
 import NavBar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, BadgeAlert, BadgeMinus, CalendarDays, Eraser, Fuel, Gauge, Search, Star } from "lucide-react";
 
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
@@ -68,7 +68,7 @@ Poderia me passar mais informações?
                         />
                     ))}
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
 
                     {car.featured && (
                         <span className="absolute cursor-pointer top-2 right-2 text-[9px] uppercase tracking-wider bg-yellow-500/90 text-black px-2 py-1 rounded-full font-bold z-10">
@@ -122,14 +122,10 @@ Poderia me passar mais informações?
 
                     {/* SPECS */}
                     <div className="flex flex-col gap-2 text-[10px] sm:text-xs text-zinc-400">
-                        <span className="">• {car.year}</span>
-                        <span className="">• {car.km} km</span>
-                        <span className="">• {car.fuel}</span>
+                        <span className="flex gap-1.5"><CalendarDays size={15}/> {car.year}</span>
+                        <span className="flex gap-1.5"><Gauge size={15}/> {car.km} km</span>
+                        <span className="flex gap-1.5"><Fuel size={15}/> {car.fuel}</span>
                     </div>
-
-                    <p className="text-zinc-500 text-[10px] sm:text-xs line-clamp-2">
-                        {car.description}
-                    </p>
 
                     <div className="flex justify-center h-full gap-1 flex-col">
                         <span className="text-white text-white font-bold text-xl">
@@ -158,9 +154,16 @@ export function Catalogo() {
     const [onlyFeatured, setOnlyFeatured] = useState(false);
     const navigate = useNavigate();
 
+    const [brandFilter, setBrandFilter] = useState("");
+    const [yearFilter, setYearFilter] = useState("");
+    const [colorFilter, setColorFilter] = useState("");
+    const [maxKm, setMaxKm] = useState("");
+
     useEffect(() => {
         fetchCars();
     }, []);
+
+
 
     async function fetchCars() {
         setLoading(true);
@@ -182,15 +185,39 @@ export function Catalogo() {
         setLoading(false);
     }
 
+    const brand = [...new Set(cars.map(car => car.brand))];
+    const years = [...new Set(cars.map(car => car.year))].sort((a, b) => b - a);
+    const colors = [...new Set(cars.map(car => car.color).filter(Boolean))];
+
     const filteredCars = cars.filter((car) => {
         const matchesSearch =
             car.brand?.toLowerCase().includes(search.toLowerCase()) ||
             car.model?.toLowerCase().includes(search.toLowerCase()) ||
             car.name?.toLowerCase().includes(search.toLowerCase());
 
-        const matchesFeatured = onlyFeatured ? car.featured === true : true;
+        const matchesFeatured =
+            onlyFeatured ? car.featured === true : true;
 
-        return matchesSearch && matchesFeatured;
+        const matchesBrand =
+            brandFilter ? car.brand === brandFilter : true;
+
+        const matchesYear =
+            yearFilter ? String(car.year) === yearFilter : true;
+
+        const matchesColor =
+            colorFilter ? car.color === colorFilter : true;
+
+        const matchesKm =
+            maxKm ? Number(car.km) <= Number(maxKm) : true;
+
+        return (
+            matchesSearch &&
+            matchesFeatured &&
+            matchesBrand &&
+            matchesYear &&
+            matchesColor &&
+            matchesKm
+        );
     });
 
     return (
@@ -209,6 +236,8 @@ export function Catalogo() {
                     </p>
                 </div>
 
+
+
                 {/* FILTERS */}
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-3 mb-6">
 
@@ -217,27 +246,104 @@ export function Catalogo() {
                         placeholder="Buscar marca ou modelo..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="flex-1 px-4 py-2.5 rounded-xl bg-zinc-900 border border-white/10 text-sm"
+                        className="flex-1 px-4 py-2 rounded-lg bg-zinc-900 border border-white/10 text-[13px]"
+
+
                     />
 
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
+
+                        {/* Modelo */}
+                        <select
+                            value={brandFilter}
+                            onChange={(e) => setBrandFilter(e.target.value)}
+                            className="px-4 py-2 rounded-lg bg-zinc-900 border border-white/10 text-[13px]"
+                        >
+                            <option value="">Marca</option>
+                            {brand.map((brand) => (
+                                <option key={brand} value={brand}>
+                                    {brand}
+                                </option>
+                            ))}
+                        </select>
+
+                        {/* Ano */}
+                        <select
+                            value={yearFilter}
+                            onChange={(e) => setYearFilter(e.target.value)}
+                            className="px-4 py-2 rounded-lg bg-zinc-900 border border-white/10 text-[13px]"
+                        >
+                            <option value="">Ano</option>
+                            {years.map((year) => (
+                                <option key={year} value={year}>
+                                    {year}
+                                </option>
+                            ))}
+                        </select>
+
+                        {/* Cor */}
+                        <select
+                            value={colorFilter}
+                            onChange={(e) => setColorFilter(e.target.value)}
+                            className="px-4 py-2 rounded-lg bg-zinc-900 border border-white/10 text-[13px]"
+                        >
+                            <option value="">Cor</option>
+                            {colors.map((color) => (
+                                <option key={color} value={color}>
+                                    {color}
+                                </option>
+                            ))}
+                        </select>
+
+                        {/* KM */}
+                        <input
+                            type="number"
+                            placeholder="KM Máx."
+                            value={maxKm}
+                            onChange={(e) => setMaxKm(e.target.value)}
+                            className="px-4 py-2 rounded-lg bg-zinc-900 border border-white/10 text-[13px]"
+                        />
+
+                        {/* Destaques */}
                         <button
                             onClick={() => setOnlyFeatured(!onlyFeatured)}
-                            className={`px-4 py-2.5 rounded-xl cursor-pointer text-sm border transition ${onlyFeatured
+                            className={`p-2 flex justify-center gap-4 items-center col-span-1 rounded-lg cursor-pointer text-[13px] border transition ${onlyFeatured
                                 ? "bg-yellow-500 text-black border-yellow-400 font-semibold"
-                                : "bg-zinc-900 border-white/10"
+                                : "bg-zinc-900 border-yellow-400 text-yellow-400"
                                 }`}
                         >
-                            Destaques
+                            <Star size={20} /><h1>Destaques</h1>
                         </button>
-                        <button
-                            onClick={() => navigate("/")}
-                            className="px-4 py-2.5 cursor-pointer rounded-xl text-black text-sm bg-white border-white/10 border"
-                        >
-                            Voltar
-                        </button>
+                        <div className="grid grid-cols-2 gap-3">
+                            <button
+                                onClick={() => {
+                                    setSearch("");
+                                    setBrandFilter("");
+                                    setYearFilter("");
+                                    setColorFilter("");
+                                    setMaxKm("");
+                                    setOnlyFeatured(false);
+                                }}
+                                className="p-2 rounded-lg cursor-pointer bg-zinc-800 border border-white/10 text-[13px]"
+                            >
+                                Limpar
+                            </button>
+
+                            <button
+                                onClick={() => navigate("/")}
+                                className="p-2 rounded-lg flex cursor-pointer justify-between items-center text-black text-[13px] bg-white border-white/10 border"
+                            >
+                                <ArrowLeft size={20} /> <h1>Voltar</h1>
+                            </button>
+                        </div>
                     </div>
+
+                    {/* Ações */}
+
                 </div>
+
+                {/* Filtros */}
+
 
                 {/* GRID */}
                 <div className="max-w-6xl mx-auto">
@@ -258,8 +364,8 @@ export function Catalogo() {
                 </div>
 
             </section>
-                    <Contact />
-                    <Footer />
+            <Contact />
+            <Footer />
         </div>
     );
 }
